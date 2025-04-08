@@ -1,0 +1,17 @@
+<div class="container-input">
+  <form action="">
+    <input type="text" placeholder="search" #inputSearch autofocus (keyup)="onSearch(inputSearch.value)" />
+  </form>
+</div>
+<div class="container" infinite-scroll (scrolled)="onScrollDown()">
+  <div class="box" *ngFor="let character of characters">
+    <img [src]="character.image" alt="">
+    <p>{{character.name | slice: 0:15}}</p>
+    <p>{{character.species}}</p>
+    <p>{{character.status}}</p>
+    <p>{{character.created | date}}</p>
+  </div>
+</div>
+<button class="buttonUp" *ngIf="showGoUpButton" (click)="onScrollUp()" style="position: sticky;bottom: 0;">
+  go up
+</button>
